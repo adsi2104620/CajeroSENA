@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Banco</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <h1 class="text-muted">Ejercicio Banco SENA</h1>
+        </div>
+        <br>
+        <div v-if="estado==0" class="container">
+            <div class="row">
+                <label class="col-2 col-form-label">Usuario</label>
+                <div class="col-4">
+                    <input v-model="user" type="text" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <label class="col-2 col-form-label">Clave</label>
+                <div class="col-4">
+                    <input v-model="pass" type="password" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div>
+                <button class="btn btn-primary " @click="validar">Entrar</button>
+            </div>
+        </div>
+        <div v-if="estado==1">
+            <button class="btn btn-success " @click="activar">Activar</button>
+        </div>
+        <div v-if="val==1" class="row">
+            <div class="row">
+                <label class="col-sm-2 col-form-label">Pregunta de Seguridad : Cuanto es : 5 + 5</label>
+                <div class="col-12">
+                    <input v-model="rta" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <br>
+        <div v-if="estado==2" class="container">
+            <div class="row">
+                <div class="col-3">
+                    <button class="btn btn-success " @click="consultaSaldo">Saldo</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-secondary " @click="consignar">Consignar</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-danger " @click="retirar">Retirar</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-info " @click="transferir">Transferir</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h4 v-if="estado>2" class="text-muted col-6" v-text="mensaje"></h4>
+            <!-- esta opción de consultar saldo -->
+            <div v-if="estado==3" class="row">
+                <label class="col-6 col-form-label"></label>
+                <h2 v-text="saldo"></h2>
+            </div>
+            <!-- esta opción es la de consignar -->
+            <div v-if="estado==4" class="row">
+                <div class="col-4">
+                    <input v-model.number="monto" type="number" class="form-control">
+                </div>
+            </div>
+            <div v-if="estado==5" class="row">
+                <div class="col-4">
+                    <input v-model="monto" type="number" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div v-if="estado>2" class="col-6">
+                    <button class="btn btn-warning " @click="volver">Atras</button>
+                </div>
+                <div v-if="estado>3" class="col-6">
+                    <button class="btn btn-success " @click="ejecutar">Aceptar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/vue.js "></script>
+<script src="js/Banco.js "></script>
+
+</html>
