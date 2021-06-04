@@ -1,10 +1,12 @@
 var app = new Vue({
     el: "#app",
     data: {
+        // estado 3 = consignar 4=tranferir 5= retirar
         usu: "",
         pw: "",
         user: "",
         pass: "",
+        mov: "",
         intento: 0,
         estado: 0,
         val: 0,
@@ -12,6 +14,7 @@ var app = new Vue({
         saldo: 1000000,
         monto: 0,
         mensaje: "",
+        arrayMov: []
 
     },
     methods: {
@@ -51,9 +54,18 @@ var app = new Vue({
             this.estado = 3;
         },
 
-        retirar() {
+        setRetirar() {
             this.mensaje = "El monto a retirar es : ";
             this.estado = 5;
+            this.mov = "Retiro";
+
+            if (this.saldo >= this.monto) {
+                this.saldo -= this.monto;
+            } else {
+                alert("No tiene fondos suficientes para efectuar la operación.");
+            }
+        },
+        retirar() {
             if (this.saldo >= this.monto) {
                 this.saldo -= this.monto;
             } else {
@@ -67,23 +79,25 @@ var app = new Vue({
         volver() {
             this.estado = 2;
         },
-        consignar() {
+        setConsignar() {
             this.mensaje = "El monto a consignar es : ";
             this.estado = 4;
+            this.mov = "Consignación";
+        },
+        consignar() {
             this.saldo += this.monto;
         },
-        probandoGit() {
-
+        regMovimiento() {
+            this.arrayMov.push({ valor: this.monto, mov: this.mov });
         },
         ejecutar() {
+
             if (this.estado == 4) {
-                this.saldo = parseInt(this.saldo) + parseInt(this.monto);
-            } else if (this.estado > 4) {
-                if (this.saldo >= this.monto) {
-                    this.saldo = parseInt(this.saldo) - parseInt(this.monto);
-                } else {
-                    alert("No tiene saldo suficiente para efectuar la operación.")
-                }
+                this.consignar();
+                this.regMovimiento();
+            } else if (this.estado == 5) {
+                this.retirar();
+                this.regMovimiento();
             }
             this.monto = 0;
             this.estado = 2;
