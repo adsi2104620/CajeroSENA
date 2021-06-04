@@ -72,6 +72,9 @@ var app = new Vue({
             this.estado = 4;
             this.saldo += this.monto;
         },
+        probandoGit() {
+
+        },
         ejecutar() {
             if (this.estado == 4) {
                 this.saldo = parseInt(this.saldo) + parseInt(this.monto);
