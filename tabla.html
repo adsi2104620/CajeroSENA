@@ -28,13 +28,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="detalle in arrayProd">
-                            <td>{{imprimir}}</td>
+                        <tr v-for="(detalle,index) in arrayProd" :key="index">
+
                             <td v-text="detalle.nombre"></td>
                             <td v-text="detalle.cant"></td>
                             <td v-text="detalle.precio"></td>
                             <td v-text="detalle.precio*detalle.cant"></td>
-                            <td><button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+                            <td><button @click="eliminar(index)" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="right">
+                                <h3>Total</h3>
+                            </td>
+                            <td>
+                                <h3>{{total}}</h3>
+                            </td>
+                            <td></td>
                         </tr>
                     </tbody>
 
@@ -45,6 +54,7 @@
 
 </body>
 <script src="js/vue.js "></script>
+<script src="js/swalert.js "></script>
 <script src="js/tabla.js "></script>
 
 </html>
