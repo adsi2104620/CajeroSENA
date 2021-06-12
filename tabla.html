@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
 <body>
@@ -22,15 +23,13 @@
                         <th>Opciones</th>
                     </tr>
                 </thead>
-                <tbody v-if="arrayProd.length">
+                <tbody>
                     <tr v-for="detalle in arrayProd">
-                        <td v-text="detalle.mov"></td>
-                        <td v-text="detalle.valor"></td>
-                    </tr>
-                </tbody>
-                <tbody v-else>
-                    <tr>
-                        <td colspan="2" align="center">NO existen registros</td>
+                        <td v-text="detalle.nombre"></td>
+                        <td v-text="detalle.cant"></td>
+                        <td v-text="detalle.precio"></td>
+                        <td v-text="detalle.precio*detalle.cant"></td>
+                        <td><button type="button" class="btn btn-danger">Danger</button></td>
                     </tr>
                 </tbody>
 
