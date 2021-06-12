@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="table-responsive col-md-12">
+            <table class="table table-bordered table-striped    ">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Total</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody v-if="arrayProd.length">
+                    <tr v-for="detalle in arrayProd">
+                        <td v-text="detalle.mov"></td>
+                        <td v-text="detalle.valor"></td>
+                    </tr>
+                </tbody>
+                <tbody v-else>
+                    <tr>
+                        <td colspan="2" align="center">NO existen registros</td>
+                    </tr>
+                </tbody>
+
+
+            </table>
+        </div>
+
+</body>
+<script src="js/vue.js "></script>
+<script src="js/tabla.js "></script>
+
+</html>

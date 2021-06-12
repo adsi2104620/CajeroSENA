@@ -68,6 +68,7 @@ var app = new Vue({
         retirar() {
             if (this.saldo >= this.monto) {
                 this.saldo -= this.monto;
+                this.regMovimiento();
             } else {
                 alert("No tiene fondos suficientes para efectuar la operación.");
             }
@@ -91,16 +92,15 @@ var app = new Vue({
             this.arrayMov.push({ valor: this.monto, mov: this.mov });
         },
         ejecutar() {
-
-            if (this.estado == 4) {
+            if (tis.estado == 4) {
                 this.consignar();
                 this.regMovimiento();
             } else if (this.estado == 5) {
                 this.retirar();
-                this.regMovimiento();
             }
             this.monto = 0;
             this.estado = 2;
         }
+
     }
 })
