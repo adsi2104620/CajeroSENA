@@ -8,4 +8,10 @@ var app = new Vue({
             { nombre: "Patilla", precio: 5700, cant: 3 },
         ],
     },
+    methods: {},
+    computed: {
+        imprimir() {
+            alert('Hola Mundo');
+        }
+    }
 })
