@@ -1,6 +1,9 @@
 var app = new Vue({
     el: "#app",
     data: {
+        nombre: "",
+        cant: 0,
+        precio: 0,
         arrayProd: [
             { nombre: "Pera", precio: 1700, cant: 20 },
             { nombre: "Piña", precio: 3700, cant: 10 },
@@ -23,6 +26,25 @@ var app = new Vue({
                     this.arrayProd.splice(index, 1);
                     Swal.fire("Eliminado!", "Su producto se elimino correctamente.", "success");
                 }
+            });
+        },
+        agregarProd() {
+            this.arrayProd.push({ nombre: this.nombre, precio: this.precio, cant: this.cant });
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+            });
+
+            Toast.fire({
+                icon: "success",
+                title: "Producto guardado",
             });
         }
     },

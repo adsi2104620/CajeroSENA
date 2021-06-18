@@ -16,6 +16,23 @@
     <div id="app">
         <div class="container">
             <h3>Productos SENA</h3>
+            <div class="row g-3">
+                <div class="col-sm-5">
+                    <input v-model="nombre" type="text" class="form-control" placeholder="Nombre">
+                </div>
+                <div class="col-sm">
+                    <input v-model="cant" type="number" class="form-control" placeholder="Cantidad">
+                </div>
+
+                <div class="col-sm input-group">
+                    <div class="input-group-text">$</div>
+                    <input v-model="precio" type="number" @keyup.enter="agregarProd" class="form-control" placeholder="Precio">
+                </div>
+                <div class="col d-flex">
+                    <button class="btn btn-success" @click="agregarProd"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+            <br>
             <div class="table-responsive col-md-12">
                 <table class="table table-bordered table-striped    ">
                     <thead>
@@ -51,10 +68,11 @@
                 </table>
             </div>
         </div>
+    </div>
 
 </body>
 <script src="js/vue.js "></script>
 <script src="js/swalert.js "></script>
-<script src="js/tabla.js "></script>
+<script src="js/producto.js "></script>
 
 </html>
